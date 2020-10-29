@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+<body>
+    
+    <script>
+
+        // Las promesas por la naturaleza son asincronas.
+        // Primero se ejecuta todo el código que es síncrono y luego las promesas.
+        const promesa = new Promise( ( resolve, reject ) => {
+
+            // Resolve: promesa exitosa
+            // Reject: cuando la promesa falla o algo no se puede cumplir.
+
+            const valor = 'Hola soy un valor!';
+
+            setTimeout(() => {
+
+                resolve( valor );
+
+            }, 1500); 
+
+        });
+
+        promesa.then( ( valorDevuelto ) => {
+
+            console.log( valorDevuelto );
+
+        })
+        .catch( err => console.warn( err ) );
+
+
+    </script>
+
+</body>
+</html>
