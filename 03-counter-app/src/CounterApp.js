@@ -4,24 +4,14 @@ import PropTypes from 'prop-types';
 const CounterApp = ( { value } ) => {
 
     //! HOOKS ( Son funciones. )
-    const [ counter, setCounter ] = useState( 0 ); // retorna [ value, function ]
 
-
-    const handleAdd = ( e ) => {
-
-        // setCounter( counter++ ); // NO podemos mutar el state de esta forma.
-
-
-        /** IMPORTANTE:
-         * Cuando usamos el setCounter le decimos a React que el counter cambió.
-         * Por eso se va a renderizar el componente
-         */
-        // #1
-        setCounter( counter + 1 );
-
-        // #2
-        // setCounter( ( c ) => c + 1 );
-    }
+    // counter = valor del estado actual.
+    // setCounter = función que permite actualizarlo.
+    const [ counter, setCounter ] = useState( value );
+    
+    const handleAdd = () => { setCounter( counter + 1 ); }
+    const handleSubtract = () => { setCounter( counter - 1 ); }
+    const handleReset = () => { setCounter( value ); }
 
     return (
 
@@ -29,7 +19,8 @@ const CounterApp = ( { value } ) => {
             <h1>CounterApp</h1>
             <h2> { counter } </h2>
             <button onClick={ handleAdd }>+1</button>
-
+            <button onClick={ handleReset }>Reset</button>
+            <button onClick={ handleSubtract }>-1</button>
         </>
 
     );
@@ -44,7 +35,7 @@ CounterApp.propTypes = {
 
 CounterApp.defaultProps = {
 
-    value: 1000
+    value: 100
 
 }
 
