@@ -1,0 +1,1 @@
+// Cada archivo que contenga un componente debe escribirse con el UpperCamelCase
