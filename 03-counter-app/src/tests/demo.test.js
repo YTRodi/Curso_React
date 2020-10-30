@@ -1,10 +1,17 @@
-//test( 'Mensaje de lo que estamos probando.', () => {} ); 
-test( 'Debe ser true.', () => {
+//! Agrupamos las pruebas unitarias.
+describe( 'Pruebas en el archivo de demo.test.js', () => {
+
+    test( 'Deben de ser iguales los strings', () => {
     
-    const isActive = true;
+        // 1 - Arrange ( Inicialización )
+        const msg = 'Hola Mundo';
+    
+        // 2 - Act ( Estímulo )
+        const msg2 = `Hola Mundo!`;
+        
+        // 3 - Assert ( Observar comportamiento )
+        expect( msg ).toBe( msg2 ); // Internamente hace un ===
+    
+    });
 
-    if ( isActive ) {
-        throw new Error( 'No está activo.' ); 
-    }
-
-})
+});
