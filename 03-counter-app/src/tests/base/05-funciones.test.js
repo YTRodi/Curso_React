@@ -11,7 +11,7 @@ describe('Pruebas en 05-funciones.js', () => {
 
         const user = getUser();
 
-        console.log(user);
+        // console.log(user);
         // expect(user).toBe(userTest); // {} === {} - False ( Son dos objetos que apuntan a direcciones de memoria diferentes )
         expect(user).toStrictEqual(userTest);
     });
@@ -25,7 +25,7 @@ describe('Pruebas en 05-funciones.js', () => {
 
         const user = getUsuarioActivo(nombreTest);
 
-        console.log(user);
+        // console.log(user);
 
         // #1
         // expect(user).toStrictEqual(userTest);
