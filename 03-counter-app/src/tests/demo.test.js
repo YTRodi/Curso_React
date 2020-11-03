@@ -5,9 +5,10 @@ describe('Pruebas en el archivo de demo.test.js', () => {
         const msg = 'Hola Mundo';
 
         // 2 - Act ( Estímulo )
-        const msg2 = `Hola Mundo!`;
+        const msg2 = `Hola Mundo`;
 
         // 3 - Assert ( Observar comportamiento )
         expect(msg).toBe(msg2); // Internamente hace un ===
     });
 });
+ 
