@@ -1,18 +1,39 @@
-// import React from 'react'; Ya no hace falta...
-import { render } from "@testing-library/react";
+import { shallow } from "enzyme";
 import PrimeraApp from "../PrimeraApp";
 
 describe('Pruebas en el componente < PrimeraApp />', () => {
     
-    test('Debe de mostrar el mensaje "Ohayo!"', () => {
+    // Pruebas con enzyme
+    test('Debe de mostrar <PrimeraApp /> correctamente', () => {
         
-        const saludoTest = 'Dattebayo!';
-        // const wrapper = render( <PrimeraApp saludo= { saludoTest }/> );// Es el producto renderizado de mi componente.
-        const { getByText } = render( <PrimeraApp saludo= { saludoTest }/> );// Es el producto renderizado de mi componente.
+        const saludoTest = 'Ohayo';
 
-        // Agregamos el archivo setupTest.js en la carpeta src
-        // expect( wrapper.getByText( saludoTest ) ).toBeInTheDocument();
-        expect( getByText( saludoTest ) ).toBeInTheDocument();
+        // shallow es parecido al render, pero nos permite simular clicks, document.queryselector y otras cosas..
+        const wrapper = shallow( <PrimeraApp saludo={ saludoTest }/> );
+
+        expect( wrapper ).toMatchSnapshot();
+    });
+
+    test('Debe de mostrar el subtitulo enviado por props', () => {
+        
+        const saludoTest = 'Ohayo';
+        const subtituloTest = 'Soy un subtitulo';
+
+        const wrapper = shallow(
+             <PrimeraApp 
+                saludo = { saludoTest }
+                subtitulo = { subtituloTest }
+             /> 
+        );
+
+        // find() = document.querySelector('#id' o '.class' o etiquetas en general);
+        const textoParrafo = wrapper.find( 'p' ).text();
+        // console.log(textoParrafo);
+
+
+        expect( textoParrafo ).toBe( subtituloTest );
+
+        expect( wrapper ).toMatchSnapshot();
 
     });
 

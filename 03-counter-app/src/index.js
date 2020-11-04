@@ -6,5 +6,5 @@ import './index.css'; // Importamos estilos.
 
 const divRoot = document.querySelector( '#root' );
 
-ReactDOM.render( <PrimeraApp saludo="Ohayo!"/>, divRoot );
+ReactDOM.render( <PrimeraApp saludo="Ohayo"/>, divRoot );
 // ReactDOM.render( <CounterApp value={ 123 } />, divRoot );
