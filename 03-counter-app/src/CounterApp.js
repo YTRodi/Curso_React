@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const CounterApp = ( { value } ) => {
+const CounterApp = ( { value = 10 } ) => {
 
     //! HOOKS ( Son funciones. )
 
@@ -17,7 +17,7 @@ const CounterApp = ( { value } ) => {
 
         <>
             <h1>CounterApp</h1>
-            <h2> { counter } </h2>
+            <h2>{ counter }</h2>
             <button onClick={ handleAdd }>+1</button>
             <button onClick={ handleReset }>Reset</button>
             <button onClick={ handleSubtract }>-1</button>
@@ -33,10 +33,10 @@ CounterApp.propTypes = {
     
 }
 
-CounterApp.defaultProps = {
+// CounterApp.defaultProps = {
 
-    value: 100
+//     value: 100
 
-}
+// }
 
 export default CounterApp;
