@@ -43,35 +43,37 @@ const GifGrid = ( { category } ) => {
     }
 
     return (
-        <div>
+        <>
             <h3>{ category }</h3>
-            <ol>
-                {
-                    // #1
-                    // images.map( oneImg => 
+            <div className="card-grid">
+                <ol>
+                    {
+                        // #1
+                        // images.map( oneImg => 
 
-                    //     <li key={ oneImg.id }>{ oneImg.title }</li>
-                    // )
+                        //     <li key={ oneImg.id }>{ oneImg.title }</li>
+                        // )
 
-                    // #2 destructuring
-                    // images.map( ( { id, title } ) => 
+                        // #2 destructuring
+                        // images.map( ( { id, title } ) => 
 
-                    //     <li key={ id }>{ title }</li>
-                    // )
-                    
-                    // #2 con el componente nuevo GifGridItem
-                    images.map( img  => (
+                        //     <li key={ id }>{ title }</li>
+                        // )
+                        
+                        // #2 con el componente nuevo GifGridItem
+                        images.map( img  => (
 
-                        <GifGridItem 
-                            key={ img.id }
-                            { ...img } // Estoy enviando cada una de las props de las img como una prop independiente.
-                            // img={ img } 
-                        />
+                            <GifGridItem 
+                                key={ img.id }
+                                { ...img } // Estoy enviando cada una de las props de las img como una prop independiente.
+                                // img={ img } 
+                            />
 
-                    ))
-                }
-            </ol>
-        </div>
+                        ))
+                    }
+                </ol>
+            </div>
+        </>
     )
 }
 
