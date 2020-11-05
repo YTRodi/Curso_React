@@ -16,7 +16,7 @@ const AddCategory = ( { setCategories } ) => {
         if( inputValue.trim().length > 2 ) {
             
             // Como no tengo acceso a las categorias del componente padre, tengo que usar un callback así tengo una referencia a ese array.
-            setCategories( cats => [ ...cats, inputValue ] );
+            setCategories( cats => [ inputValue, ...cats ] );
             setInputValue( '' ); // Para que no se creen valores con el mismo key.
         }
     }

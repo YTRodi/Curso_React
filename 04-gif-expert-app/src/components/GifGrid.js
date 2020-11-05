@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { getGifs } from '../helpers/getGifs';
 import GifGridItem from './GifGridItem';
 
 const GifGrid = ( { category } ) => {
@@ -10,37 +11,14 @@ const GifGrid = ( { category } ) => {
     // ( Analogía al patrón de diseño Singleton )
     //     1er param = función a ejecutar
     //     2do param = [] de dependencias
+
+    // Si la catergoria cambia entonces se ejecuta de nuevo el useEffect
     useEffect( () => {
 
-        getGifs();
+        getGifs( category )
+            .then( imgs => setImages( imgs ) );
 
-    }, [])
-
-    // Función para consumir los datos de la Fetch API
-    const getGifs = async() => {
-
-        // endpoint
-        const url = 'https://api.giphy.com/v1/gifs/search?q=Tanjiro&limit=10&api_key=Nt4ACMs0TBmsydLDNeElO00qxCJaqUTp'; 
-        const res = await fetch( url );
-        // const data = await res.json();
-        const { data } = await res.json();
-        
-        // No me interesan todos los datos que me proporciona la data, solo algunos por eso mapeo...
-        const onlyGifs = data.map( img => {
-
-            return {
-                id: img.id,
-                title: img.title,
-                url: img.images?.downsized_medium.url // images? = Preguntamos que si viene una imagen, vamos a utilizar esta prop
-            }
-            
-            // return { id: img.id, title: img.title, url: img.images?.downsized_medium.url }  // Destructuring
-        });
-
-        console.log( onlyGifs );
-        setImages( onlyGifs );
-
-    }
+    }, [ category ])
 
     return (
         <>
@@ -48,19 +26,6 @@ const GifGrid = ( { category } ) => {
             <div className="card-grid">
                 <ol>
                     {
-                        // #1
-                        // images.map( oneImg => 
-
-                        //     <li key={ oneImg.id }>{ oneImg.title }</li>
-                        // )
-
-                        // #2 destructuring
-                        // images.map( ( { id, title } ) => 
-
-                        //     <li key={ id }>{ title }</li>
-                        // )
-                        
-                        // #2 con el componente nuevo GifGridItem
                         images.map( img  => (
 
                             <GifGridItem 
