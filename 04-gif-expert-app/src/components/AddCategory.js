@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export const AddCategory = () => {
+const AddCategory = () => {
+
+    const [inputValue, setInputValue] = useState('Hola Mundo');
+
+    const handleInputChange = ( e ) => {
+        console.log( e.target.value );
+        setInputValue( e.target.value );
+    }
+
+    const handleSubmit = ( e ) => {
+        e.preventDefault();
+    }
+
     return (
-        <>
-            <h2>AddCategory</h2>
-        </>
+        <form onSubmit={ handleSubmit }>
+            <input 
+                type='text'
+                value={ inputValue }
+                onChange={ handleInputChange } 
+            />
+        </form>
     )
 }
+
+export default AddCategory
