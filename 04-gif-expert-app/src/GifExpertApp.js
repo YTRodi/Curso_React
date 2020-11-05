@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import AddCategory from './components/AddCategory';
+import GifGrid from './components/GifGrid';
 
 const GifExpertApp = (  ) => {
 
-    const categoriesDefault = [ 'Kimetsu no Yaiba', 'Shingeki no kyojin', 'Made in abyss' ];
+    // const categoriesDefault = [ 'Kimetsu no Yaiba', 'Shingeki no kyojin', 'Made in abyss' ];
+    // const [ categories, setCategories ] = useState( categoriesDefault );
 
-    const [ categories, setCategories ] = useState( categoriesDefault );
+    const [ categories, setCategories ] = useState( [ 'Kimetsu no Yaiba' ] );
 
     return (
         <>
@@ -16,11 +18,14 @@ const GifExpertApp = (  ) => {
             <ol>
                 { 
                     // El key NO PUEDE ser el índice y TIENE QUE SER único.
-                    categories.map( category => {
-                        return <li key={ category }>
-                                    { category }
-                               </li>
-                    })              
+                    categories.map( category =>
+
+                        <GifGrid
+                            key={ category }
+                            category={ category } 
+                        />
+                        
+                    )              
                 }
             </ol>
         </>
