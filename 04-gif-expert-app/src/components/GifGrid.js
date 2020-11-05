@@ -1,42 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { getGifs } from '../helpers/getGifs';
+import React from 'react'
+import { useFetchGifs } from '../hooks/useFetchGifs';
 import GifGridItem from './GifGridItem';
 
 const GifGrid = ( { category } ) => {
   
-    const [images, setImages] = useState([]);
-
-    // Me permite poder ejecutar código de manera condicional, es decir,
-    // solamente quiero que se ejecute esa condición cuando el componente es RENDERIZADO por PRIMERA vez.
-    // ( Analogía al patrón de diseño Singleton )
-    //     1er param = función a ejecutar
-    //     2do param = [] de dependencias
-
-    // Si la catergoria cambia entonces se ejecuta de nuevo el useEffect
-    useEffect( () => {
-
-        getGifs( category )
-            .then( imgs => setImages( imgs ) );
-
-    }, [ category ])
+    const { data:images , loading } = useFetchGifs( category );
+    // data:images = le agregamos un alias a la data, en esta caso las img.
 
     return (
         <>
-            <h3>{ category }</h3>
+            <h3 className="animate__animated animate__fadeInDown">{ category }</h3>
+
+            {/* Operación lógica AND, si es true entonces evalua el primero, sino no evalua nada. */}
+            { loading && <p className="animate__animated animate__flash">Loading...</p> }
+
             <div className="card-grid">
-                <ol>
-                    {
-                        images.map( img  => (
+                {
+                    images.map( img  => (
 
-                            <GifGridItem 
-                                key={ img.id }
-                                { ...img } // Estoy enviando cada una de las props de las img como una prop independiente.
-                                // img={ img } 
-                            />
+                        <GifGridItem 
+                            key={ img.id }
+                            { ...img } // Estoy enviando cada una de las props de las img como una prop independiente.
+                            // img={ img } 
+                        />
 
-                        ))
-                    }
-                </ol>
+                    ))
+                }
             </div>
         </>
     )

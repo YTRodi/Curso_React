@@ -19,7 +19,6 @@ input {
     flex-wrap: wrap;
 }
 
-
 /* GifGridItem */
 .card {
     align-content: center;
@@ -36,5 +35,5 @@ input {
 }
 
 .card img {
-    max-height: 170px;
+    max-height: 100%;
 }

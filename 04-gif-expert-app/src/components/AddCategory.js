@@ -25,6 +25,7 @@ const AddCategory = ( { setCategories } ) => {
         <form onSubmit={ handleSubmit }>
             <input
                 // required
+                placeholder='Ingrese gif a buscar'
                 type='text'
                 value={ inputValue }
                 onChange={ handleInputChange } 
