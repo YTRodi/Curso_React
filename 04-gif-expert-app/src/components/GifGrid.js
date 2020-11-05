@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import GifGridItem from './GifGridItem';
 
 const GifGrid = ( { category } ) => {
   
+    const [images, setImages] = useState([]);
+
     // Me permite poder ejecutar código de manera condicional, es decir,
     // solamente quiero que se ejecute esa condición cuando el componente es RENDERIZADO por PRIMERA vez.
     // ( Analogía al patrón de diseño Singleton )
@@ -35,12 +38,39 @@ const GifGrid = ( { category } ) => {
         });
 
         console.log( onlyGifs );
+        setImages( onlyGifs );
 
     }
 
     return (
         <div>
             <h3>{ category }</h3>
+            <ol>
+                {
+                    // #1
+                    // images.map( oneImg => 
+
+                    //     <li key={ oneImg.id }>{ oneImg.title }</li>
+                    // )
+
+                    // #2 destructuring
+                    // images.map( ( { id, title } ) => 
+
+                    //     <li key={ id }>{ title }</li>
+                    // )
+                    
+                    // #2 con el componente nuevo GifGridItem
+                    images.map( img  => (
+
+                        <GifGridItem 
+                            key={ img.id }
+                            { ...img } // Estoy enviando cada una de las props de las img como una prop independiente.
+                            // img={ img } 
+                        />
+
+                    ))
+                }
+            </ol>
         </div>
     )
 }
