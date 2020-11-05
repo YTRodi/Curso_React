@@ -7,17 +7,10 @@ const GifExpertApp = (  ) => {
 
     const [ categories, setCategories ] = useState( categoriesDefault );
 
-    // const handleAdd = () => { 
-        
-    //     // Con esta función le digo a React que el estado del [] ( categoriesDefault ) cambió y se necesita renderizar de nuevo el componente
-    //     setCategories( [ ...categories, 'Naruto' ] );
-
-    // };
-
     return (
         <>
             <h2>GifExpertApp</h2>
-            <AddCategory />
+            <AddCategory setCategories={ setCategories } />
             <hr />
 
             <ol>
