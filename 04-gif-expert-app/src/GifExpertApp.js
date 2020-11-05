@@ -7,7 +7,7 @@ const GifExpertApp = (  ) => {
     // const categoriesDefault = [ 'Kimetsu no Yaiba', 'Shingeki no kyojin', 'Made in abyss' ];
     // const [ categories, setCategories ] = useState( categoriesDefault );
 
-    const [ categories, setCategories ] = useState( [  ] );
+    const [ categories, setCategories ] = useState( [ 'Tanjiro' ] );
 
     return (
         <>
