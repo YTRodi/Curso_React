@@ -1,14 +1,26 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Utilizando el API de Breaking Bad.
 
 export const useFetch = ( url ) => {
     
+    // La idea de este ref es que mantenga la referencia cuando el componente esta vivo o no ( montado/desmontado ).
+    const isMounted = useRef( true );
+
     const [state, setState] = useState( { 
         data: null,
         loading: true,
         error: null 
     } );
+
+    useEffect(() => {
+        
+        // El return se ejecuta cuando el componente se desmonte.
+        return () => {
+            isMounted.current = false;
+        }
+
+    }, []);
 
     // Solo se va a ejecutar cuando cambiemos la url.
     useEffect( () => {
@@ -22,14 +34,20 @@ export const useFetch = ( url ) => {
         fetch( url )
             .then( resp => resp.json() )
             .then( data => {
+                
+                    if( isMounted.current ) {
+                        
+                        setState({
+                            loading: false,
+                            error: false,
+                            data
+                            // data: data
+                        });
 
-                setState({
-                    loading: false,
-                    error: false,
-                    data
-                    // data: data
-                })
-
+                    } else {
+                        console.log('setState no se llamó');
+                    }
+                
             })
 
     }, [ url ] );
