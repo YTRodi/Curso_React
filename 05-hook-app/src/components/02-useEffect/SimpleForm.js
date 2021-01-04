@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './effects.css';
+import { Message } from './Message';
 
 export const SimpleForm = () => {
 
@@ -14,18 +15,20 @@ export const SimpleForm = () => {
 
     // Nada, solamente se ejecuta una vez.
     useEffect( () => {
-        console.log('hey');
+        // console.log('hey');
     }, [] );
 
     // Del formulario
     useEffect( () => {
-        console.log('formState cambió!');
+        // console.log('formState cambió!');
     }, [ formState ] );
 
     // Del email
     useEffect( () => {
-        console.log('email cambió!');
+        // console.log('email cambió!');
     }, [ email ] );
+
+
 
     // Lo manejamos a través del 'name'
     const handleInputChange = ( { target } ) => {
@@ -65,6 +68,9 @@ export const SimpleForm = () => {
                     onChange={ handleInputChange }
                 >
                 </input>
+
+                {/* Si el name existe y es igual a '123', ejecuta el componente Message */}
+                { ( name === '123' ) && < Message /> }
             </div>
         </>
     )
