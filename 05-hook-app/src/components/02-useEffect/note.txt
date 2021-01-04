@@ -1,0 +1,18 @@
+useEffect:
+Nos permite ejecutar algun efecto 'secundario' cuando algo suceda en nuestros
+componentes.
+
+Consejo:
+Trabajar los efectos de manera individual.
+Como por ejemplo, cuando queremos hacer algo cuando se carga el formulario, entonces lo ponemos
+en un array [] (array de dependencias)
+
+useEffect( () => {
+        console.log('hey');
+}, [] );
+
+¿ DONDE PODEMOS USARLO ?
+Cuando tenemos algun selector, como pueden ser:
+-comboBox
+-select
+y queremos ejecutar algo cuando el valor del selector cambie.
