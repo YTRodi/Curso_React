@@ -18,7 +18,7 @@ export const LoginPage = () => {
 
             <button
                 className="btn btn-primary"
-                
+                onClick={ () => setUser( userDefault ) }
             >
                 Login
             </button>
