@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { TodoListItem } from './TodoListItem'
 
 export const TodoList = ( { todos, handleDelete, handleToggle } ) => {
@@ -21,4 +23,10 @@ export const TodoList = ( { todos, handleDelete, handleToggle } ) => {
 
         </ul>
     )
+}
+
+TodoList.propTypes = {
+    todos: PropTypes.array.isRequired,
+    handleDelete: PropTypes.func.isRequired,
+    handleToggle: PropTypes.func.isRequired
 }

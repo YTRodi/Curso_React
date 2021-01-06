@@ -77,7 +77,7 @@ export const TodoApp = () => {
                     {/* 
                         A la app no le interesa la lógica del form, sólo le interesa saber cuando este componente (form)  
                         emita un nuevo todo, la manera para agregarlo al reducer es llamando a la función que me mandas por argumento.
-                     */}
+                    */}
                     < TodoAdd 
                         handleAddTodo={ handleAddTodo }
                     />
