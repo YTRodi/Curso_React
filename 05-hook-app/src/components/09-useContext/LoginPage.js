@@ -3,9 +3,9 @@ import { UserContext } from './UserContext'
 
 export const LoginPage = () => {
 
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
-    const userLogin = {
+    const userDefault = {
         id:123,
         name: 'Maggie',
         email: 'muerdomucho@gmail.com'
@@ -18,7 +18,7 @@ export const LoginPage = () => {
 
             <button
                 className="btn btn-primary"
-                onClick={ () => setUser( userLogin ) }
+                
             >
                 Login
             </button>
