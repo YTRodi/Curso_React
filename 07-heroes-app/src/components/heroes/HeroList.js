@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher'
 import { HeroCard } from './HeroCard';
 
 export const HeroList = ( { publisher } ) => {
 
-    const heroes = getHeroesByPublisher( publisher );
-
+    // Si el publisher cambia (array de dependencias) se vuelve a memorizar.
+    const heroes = useMemo( () => getHeroesByPublisher( publisher ), [ publisher ]);
+ 
     return (
         <div className="card-columns">
             {

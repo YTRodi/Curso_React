@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { getHeroesById } from '../../selectors/getHeroesById';
 
@@ -7,7 +7,8 @@ export const HeroScreen = ( { history } ) => {
     // const params = useParams();
     const { heroeId } = useParams(); // Hook nativo de 'react-router-dom'
 
-    const hero = getHeroesById( heroeId );
+    // Si mostramos o ocultamos info acá, no vamos a volver a lanzar el getHeroesById.
+    const hero = useMemo( () => getHeroesById( heroeId ), [ heroeId ]);
 
     if( !hero ) {
         // Valido una ruta en caso de que ingresen cualquier cosa.
